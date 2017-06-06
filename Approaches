@@ -1,0 +1,34 @@
+
+ Taking good parts of all approaches we have this: 
+- Knob is controlling the parameter. 
+- Sense the parameter first by the microcontroller. 
+- Ask the user to use the knob to the max position (capacitance as in a pot) 
+- So in effect find out the Capacitance range (max and min) 
+
+All this with switch (main fan switch) off. 
+ITS like a boot time check(only once done during installation). 
+*************************************************************************************************** 
+Micro Controller controls the speed of the fan based on two inputs. 
+A)Input from Phone (In_Android). (B) Input from wall Knob (In_Knob). 
+ Among the two input In_Knob will have higher priority (Works either way) only the first time(during boot time if in case of collision) 
+ -If no input is detected then the Microcontroller runs the fan at previous speed. 
+ -In_Android changes and In_Knob does not change- Under this condition Microcontroller changes fan speed according to change in In_Android--So is the In_Knob position changed too.(due to the motor movement) 
+ -In_Knob changes and In_Android does not change- Under this condition Microcontroller changes fan speed according to change in In_Knob and the current fan speed is relayed back to the android phone. 
+ -In_Android changes and In_Knob also changes- Under this condition Microcontroller changes fan speed according to change in In_Knob and ignores In_Android--(this cannot happen as if the android phone is triggering a change the same change will be echoed back at the knob due to motor movement making it the user impossible to change the wall knob position when android phone is being used). 
+
+In Summary - 
+This approach has the mixed advantages of all the approaches with elimination of almost all the disadvantages. 
+It achieves: 
+ -Range detection and feedback control (so it doesn't flip-out). 
+ -Simultaneous sync movement so there is no problem of collision whatsoever. 
+ -Less analog circuitry involved to an extent(Yes there is power used but I think it will be meagre since a DC motor uses very less current to rotate(and we don't want high speed either so less current). 
+
+***Using Motor circuit to rotate the knob in either direction : 
+Circuitry involved: 
+ -Better to use the AC rectified DC circuit to power up the motor . 
+ -Needs a AC - DC smooth rectifier and a controlling setting to vary motor according to Android data. 
+
+Alternative : 
+Instead of using a motor we can use a RC network(mostly yet to be ascertained) or in the same likes a simple circuit where either C/R is varying depending upon android data. 
+A digital switch is involved which connects the existing knob circuitry to this RC network(or some sort of network) only when speed is changed at the PHONE side(In_Android). 
+*** 

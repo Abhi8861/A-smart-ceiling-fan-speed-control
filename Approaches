@@ -6,7 +6,7 @@
 - So in effect find out the Capacitance range (max and min) 
 
 All this with switch (main fan switch) off. 
-ITS like a boot time check(only once done during installation). 
+This is done in the bootloader section of MC.
 *************************************************************************************************** 
 Micro Controller controls the speed of the fan based on two inputs. 
 A)Input from Phone (In_Android). (B) Input from wall Knob (In_Knob). 
